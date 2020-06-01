@@ -18,13 +18,25 @@ namespace Vidly3.Controllers
       return RedirectToAction("Index", "Home", new {page=1, sortby="name"});
     }
     // GET: Movies
-    public ActionResult Index()
-        {
-            return View();
-        }
+    public ActionResult Index(int? pageIndex, string sortBy)
+    {
+      if (!pageIndex.HasValue)
+        pageIndex = 1;
 
-        // GET: Movies/Details/5
-        public ActionResult Details(int id)
+      if (String.IsNullOrWhiteSpace(sortBy))
+        sortBy = "Free Range Chickens";
+
+      return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+    }
+
+    public ActionResult ByReleaseDate(int year, int month)
+    {
+      return Content(year + "/" + month);
+    }
+
+
+    // GET: Movies/Details/5
+    public ActionResult Details(int id)
         {
             return View();
         }
@@ -54,11 +66,13 @@ namespace Vidly3.Controllers
         // GET: Movies/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+      return Content("id=" + id);
         }
 
-        // POST: Movies/Edit/5
-        [HttpPost]
+
+
+    // POST: Movies/Edit/5
+    [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
