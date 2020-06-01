@@ -12,6 +12,10 @@ namespace Vidly3.Controllers
     public ActionResult Random()
     {
       return View();
+      //return Content("Hellow Hallow");
+      //return HttpNotFound();
+      //return new EmptyResult();
+      return RedirectToAction("Index", "Home", new {page=1, sortby="name"});
     }
     // GET: Movies
     public ActionResult Index()
