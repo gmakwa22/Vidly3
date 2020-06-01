@@ -26,5 +26,6 @@ namespace Vidly3
                 "~/Content/bootstrap.css",
                 "~/Content/site.css"));
     }
-  }
+  }                                                            
 }
+                                  
